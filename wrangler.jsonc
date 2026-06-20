@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "milton-adrian",
+  "compatibility_date": "2026-06-20",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": "dist/portfolio/browser/browser"
+  },
+  "compatibility_flags": [
+    "nodejs_compat"
+  ]
+}
