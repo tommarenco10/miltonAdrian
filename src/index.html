@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Milton Adrian Cañete | Video Producer & Cinematographer</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Portfolio of Milton Adrian Cañete, a video producer and cinematographer based in Buenos Aires, Argentina." />
+    <meta name="theme-color" content="#000000" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <script>
+      (function() {
+        const stored = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = stored || (prefersDark ? 'dark' : 'light');
+        document.documentElement.classList.add(theme);
+      })();
+    </script>
+  </head>
+  <body class="min-h-screen transition-colors duration-300">
+    <app-root></app-root>
+  </body>
+</html>

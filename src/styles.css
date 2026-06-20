@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-white text-gray-900 font-sans antialiased;
+  }
+
+  html.dark body {
+    @apply bg-gray-900 text-white;
+  }
+
+  html.dark .bg-gray-900\/95 {
+    background-color: rgba(31, 41, 55, 0.95);
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 bg-black text-white font-medium tracking-wide transition-all duration-300;
+  }
+
+  .btn-primary:hover {
+    @apply bg-gray-800;
+  }
+
+  html.dark .btn-primary {
+    @apply bg-white text-black;
+  }
+
+  html.dark .btn-primary:hover {
+    @apply bg-gray-200;
+  }
+
+  .btn-outline {
+    @apply px-6 py-3 border-2 border-black text-black font-medium tracking-wide transition-all duration-300;
+  }
+
+  .btn-outline:hover {
+    @apply bg-black text-white;
+  }
+
+  html.dark .btn-outline {
+    @apply border-white text-white;
+  }
+
+  html.dark .btn-outline:hover {
+    @apply bg-white text-black;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+@layer utilities {
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  
+  .animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
