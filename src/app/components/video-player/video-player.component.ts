@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, OnDestroy, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-video-player',
@@ -22,7 +23,7 @@ import { CommonModule } from '@angular/common';
       } @else {
         <iframe
           #youtubeIframe
-          [src]="embedUrl"
+          [src]="safeEmbedUrl"
           class="absolute inset-0 w-full h-full"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -40,11 +41,15 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit {
   isPlaying = false;
   thumbnailUrl = '';
   embedUrl = '';
+  safeEmbedUrl: SafeResourceUrl = '';
+
+  constructor(private sanitizer: DomSanitizer) {}
 
   ngOnInit(): void {
     const videoId = this.extractVideoId(this.videoUrl);
     this.thumbnailUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
     this.embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+    this.safeEmbedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.embedUrl);
   }
 
   ngAfterViewInit(): void {}

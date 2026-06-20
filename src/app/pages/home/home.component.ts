@@ -32,7 +32,7 @@ import { TranslationService } from '../../services/translation.service';
               <span class="block text-gray-400 dark:text-gray-500">FILMS</span>
             </h1>
             <p class="text-xl text-gray-600 dark:text-gray-300 mb-2">
-              {{ ownerInfo.title }}
+              {{ t('about.jobTitle') }}
             </p>
             <p class="text-gray-400 dark:text-gray-500 flex items-center gap-2">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -69,7 +69,7 @@ import { TranslationService } from '../../services/translation.service';
         <div class="max-w-2xl">
           <span class="text-xs font-semibold tracking-widest text-gray-400 dark:text-gray-500 uppercase mb-4 block">{{ t('about.bio') }}</span>
           <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-8">
-            {{ ownerInfo.bio }}
+            {{ t('about.bioText') }}
           </p>
           <a routerLink="/about" class="inline-flex items-center gap-2 btn-primary">
             {{ t('home.learnMore') }}
@@ -80,14 +80,14 @@ import { TranslationService } from '../../services/translation.service';
         </div>
       </section>
       
-      <section class="container-custom py-16 bg-black dark:bg-white text-white dark:text-black transition-colors duration-300">
+      <section class="container-custom py-16 bg-black dark:bg-gray-800 text-white dark:text-white transition-colors duration-300">
         <div class="max-w-2xl">
-          <span class="text-xs font-semibold tracking-widest text-gray-400 dark:text-gray-500 uppercase mb-4 block">{{ t('home.getInTouch') }}</span>
-          <h2 class="text-3xl font-bold mb-4">{{ t('home.letsWorkTogether') }}</h2>
-          <p class="mb-8" [class.text-gray-400]="!isDark()" [class.dark:text-gray-700]="isDark()">
+          <span class="text-xs font-semibold tracking-widest text-gray-400 dark:text-gray-300 uppercase mb-4 block">{{ t('home.getInTouch') }}</span>
+          <h2 class="text-3xl font-bold mb-4 text-white dark:text-white">{{ t('home.letsWorkTogether') }}</h2>
+          <p class="mb-8 text-gray-400 dark:text-gray-300">
             {{ t('home.availability') }}
           </p>
-          <a routerLink="/contact" class="inline-flex items-center gap-2 bg-white dark:bg-black text-black dark:text-white px-6 py-3 font-medium tracking-wide transition-all hover:bg-gray-200 dark:hover:bg-gray-800">
+          <a routerLink="/contact" class="inline-flex items-center gap-2 bg-white dark:bg-gray-700 text-black dark:text-white px-6 py-3 font-medium tracking-wide transition-all hover:bg-gray-200 dark:hover:bg-gray-600">
             {{ t('home.getInTouch') }}
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>

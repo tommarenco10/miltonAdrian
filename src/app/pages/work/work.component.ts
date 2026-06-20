@@ -36,7 +36,7 @@ import { TranslationService } from '../../services/translation.service';
             <button 
               (click)="filterCategory(category.slug)"
               [class]="getFilterButtonClass(category.slug)">
-              {{ category.name }}
+              {{ tCategory(category.slug) }}
             </button>
           }
         </div>
@@ -44,7 +44,7 @@ import { TranslationService } from '../../services/translation.service';
         @if (selectedCategory) {
           <div>
             <h2 class="text-2xl font-bold tracking-tight mb-8 pb-4 border-b-2 border-black dark:border-white">
-              {{ getCategoryName(selectedCategory) }}
+              {{ tCategory(selectedCategory) }}
             </h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               @for (project of filteredProjects; track project.id) {
@@ -58,7 +58,7 @@ import { TranslationService } from '../../services/translation.service';
           @for (category of categories; track category.slug) {
             <div class="mb-16">
               <h2 class="text-xl font-bold tracking-tight mb-6 pb-4 border-b-2 border-gray-200 dark:border-gray-700">
-                {{ category.name }}
+                {{ tCategory(category.slug) }}
                 <span class="text-gray-400 dark:text-gray-500 font-normal text-sm ml-2">({{ category.projects.length }})</span>
               </h2>
               <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -84,6 +84,17 @@ export class WorkComponent implements OnInit {
   filteredProjects: Project[] = [];
   translationService = inject(TranslationService);
 
+  private categoryTranslationKeys: { [slug: string]: string } = {
+    'behind-the-scenes': 'category.behindTheScenes',
+    'feature-films': 'category.featureFilms',
+    'live-session': 'category.liveSession',
+    'recitales': 'category.recitales',
+    'videoclips': 'category.videoclips',
+    'deportes': 'category.deportes',
+    'social-media': 'category.socialMedia',
+    'podcasts': 'category.podcasts'
+  };
+
   ngOnInit(): void {
     this.categories = getAllCategories();
     this.projects = PROJECTS;
@@ -93,6 +104,15 @@ export class WorkComponent implements OnInit {
     return this.translationService.t(key);
   }
 
+  tCategory(slug: string): string {
+    const translationKey = this.categoryTranslationKeys[slug];
+    if (translationKey) {
+      return this.translationService.t(translationKey);
+    }
+    const category = this.categories.find(c => c.slug === slug);
+    return category?.name || slug;
+  }
+
   filterCategory(slug: string | null): void {
     this.selectedCategory = slug;
     if (slug) {
@@ -100,11 +120,6 @@ export class WorkComponent implements OnInit {
     } else {
       this.filteredProjects = [];
     }
-  }
-
-  getCategoryName(slug: string): string {
-    const category = this.categories.find(c => c.slug === slug);
-    return category?.name || '';
   }
 
   getFilterButtonClass(slug: string | null): string {

@@ -31,7 +31,7 @@ import { TranslationService } from '../../services/translation.service';
               <span class="block text-gray-400 dark:text-gray-500">CAÑETE</span>
             </h1>
             <p class="text-xl text-gray-600 dark:text-gray-300 mt-4">
-              {{ ownerInfo.title }}
+              {{ t('about.jobTitle') }}
             </p>
             <p class="text-gray-400 dark:text-gray-500 flex items-center gap-2 mt-2">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -49,13 +49,13 @@ import { TranslationService } from '../../services/translation.service';
           <span class="text-xs font-semibold tracking-widest text-gray-400 dark:text-gray-500 uppercase mb-4 block">{{ t('about.bio') }}</span>
           <div class="max-w-none">
             <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6 text-lg">
-              {{ ownerInfo.bio }}
+              {{ t('about.bioText') }}
             </p>
             <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-              With extensive experience in cinematography and video production spanning over a decade, Milton has developed a distinctive visual style that blends technical excellence with artistic storytelling. His work spans across multiple genres including music videos, live sessions, feature films, documentaries, and commercial content.
+              {{ t('about.bioExtended1') }}
             </p>
             <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-              Known for his meticulous attention to light and composition, Milton brings a cinematographer's eye to every project. Whether capturing the energy of a live performance or crafting a narrative visual story, each project receives the same level of care and creative vision.
+              {{ t('about.bioExtended2') }}
             </p>
           </div>
         </div>
@@ -110,28 +110,28 @@ import { TranslationService } from '../../services/translation.service';
           <div>
             <h3 class="font-semibold mb-4 text-black dark:text-white">{{ t('skills.cameraLighting') }}</h3>
             <ul class="space-y-2 text-gray-600 dark:text-gray-400 text-sm">
-              <li>• RED, ARRI, Sony Venice</li>
-              <li>• Canon Cinema Line</li>
-              <li>• Natural & Artificial Lighting</li>
-              <li>• Lighting Design</li>
+              <li>• {{ t('skills.redArri') }}</li>
+              <li>• {{ t('skills.canonCinema') }}</li>
+              <li>• {{ t('skills.naturalArtificial') }}</li>
+              <li>• {{ t('skills.lightingDesign') }}</li>
             </ul>
           </div>
           <div>
             <h3 class="font-semibold mb-4 text-black dark:text-white">{{ t('skills.production') }}</h3>
             <ul class="space-y-2 text-gray-600 dark:text-gray-400 text-sm">
-              <li>• Music Videos</li>
-              <li>• Live Sessions & Concerts</li>
-              <li>• Documentaries</li>
-              <li>• Commercial Content</li>
+              <li>• {{ t('skills.musicVideos') }}</li>
+              <li>• {{ t('skills.liveSessionsConcerts') }}</li>
+              <li>• {{ t('skills.documentaries') }}</li>
+              <li>• {{ t('skills.commercialContent') }}</li>
             </ul>
           </div>
           <div>
             <h3 class="font-semibold mb-4 text-black dark:text-white">{{ t('skills.postProduction') }}</h3>
             <ul class="space-y-2 text-gray-600 dark:text-gray-400 text-sm">
-              <li>• Color Grading (DaVinci)</li>
-              <li>• Editing (Premiere, FCPX)</li>
-              <li>• Post-Production Supervision</li>
-              <li>• Delivery & Mastering</li>
+              <li>• {{ t('skills.colorGrading') }}</li>
+              <li>• {{ t('skills.editing') }}</li>
+              <li>• {{ t('skills.postSupervision') }}</li>
+              <li>• {{ t('skills.deliveryMastering') }}</li>
             </ul>
           </div>
         </div>

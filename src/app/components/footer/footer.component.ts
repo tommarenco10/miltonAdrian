@@ -15,9 +15,10 @@ import { TranslationService } from '../../services/translation.service';
           <div>
             <div class="flex items-center gap-2 mb-4">
               <svg class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <circle cx="12" cy="12" r="10"/>
-                <circle cx="12" cy="12" r="3"/>
-                <path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>
+                <rect x="2" y="5" width="20" height="14" rx="2"/>
+                <circle cx="12" cy="12" r="4"/>
+                <path d="M6 5V3M18 5V3"/>
+                <circle cx="17" cy="7" r="1" fill="currentColor"/>
               </svg>
               <div class="flex items-baseline gap-1">
                 <span class="text-lg font-black tracking-tighter">MILTON</span>
@@ -26,7 +27,7 @@ import { TranslationService } from '../../services/translation.service';
               </div>
             </div>
             <p class="text-gray-400 dark:text-gray-500 text-sm leading-relaxed">
-              {{ ownerInfo.bio }}
+              {{ t('about.bioText') }}
             </p>
           </div>
           
