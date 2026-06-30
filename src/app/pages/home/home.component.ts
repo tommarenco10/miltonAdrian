@@ -5,7 +5,7 @@ import { HeaderComponent } from '../../components/header/header.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { ProjectCardComponent } from '../../components/project-card/project-card.component';
 import { OWNER_INFO } from '../../data/owner.data';
-import { getFeaturedProjects, Project } from '../../data/projects.data';
+import { getFixedFeaturedProjects, Project } from '../../data/projects.data';
 import { TranslationService } from '../../services/translation.service';
 
 @Component({
@@ -56,7 +56,7 @@ import { TranslationService } from '../../services/translation.service';
           </a>
         </div>
         
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           @for (project of featuredProjects; track project.id) {
             <app-project-card 
               [project]="project"
@@ -106,7 +106,7 @@ export class HomeComponent implements OnInit {
   translationService = inject(TranslationService);
 
   ngOnInit(): void {
-    this.featuredProjects = getFeaturedProjects(6);
+    this.featuredProjects = getFixedFeaturedProjects();
   }
 
   t(key: string): string {

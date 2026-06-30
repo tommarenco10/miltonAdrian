@@ -177,9 +177,34 @@ export function getProjectsByCategory(categorySlug: string): Project[] {
   return category?.projects || [];
 }
 
+// ============================================================
+// ★ VIDEOS DESTACADOS EN HOME - Editá estos IDs de YouTube
+// Para cambiar un video, reemplazá el ID (lo de después de v=)
+// Ej: 'dQw4w9WgXcQ' → https://www.youtube.com/watch?v=dQw4w9WgXcQ
+// ============================================================
+export const FEATURED_VIDEO_IDS: string[] = [
+  'c2E-fZSdGBY',      // 1° Fila - Col 1 (antes: Videoclip 01)
+  'Ild5JQ27lT8',      // 1° Fila - Col 2 (antes: Sesión en Vivo 01)
+  'G_FZcDR2j7I',      // 1° Fila - Col 3 (antes: Recital 01)
+  '1Rcg9Gd7mlk',      // 1° Fila - Col 4 (antes: Largometraje 01)
+  '1Rcg9Gd7mlk',      // 2° Fila - Col 1 (antes: Videoclip 02)
+  'izdBAIQ6vNs',      // 2° Fila - Col 2 (antes: Sesión en Vivo 02)
+  'rrFY8-JFmkU',      // 2° Fila - Col 3 (antes: Recital 02)
+  'Js8My27xvvA',      // 2° Fila - Col 4 (antes: Detrás de Cámaras 01)
+];
+
 export function getFeaturedProjects(count: number = 6): Project[] {
   const shuffled = [...PROJECTS].sort(() => Math.random() - 0.5);
   return shuffled.slice(0, count);
+}
+
+export function getFixedFeaturedProjects(): Project[] {
+  return FEATURED_VIDEO_IDS
+    .map(videoId => PROJECTS.find(p => {
+      const match = p.videoUrl.match(/[?&]v=([^&]+)/);
+      return match !== null && match[1] === videoId;
+    }))
+    .filter((p): p is Project => p !== undefined);
 }
 
 export function getAllCategories(): Category[] {
