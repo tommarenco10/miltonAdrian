@@ -6,6 +6,7 @@ export interface Project {
   description: string;
   videoUrl: string;
   thumbnail?: string;
+  group?: string;
 }
 
 export interface Category {

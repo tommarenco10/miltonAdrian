@@ -17,7 +17,7 @@ export const OWNER_INFO: OwnerInfo = {
   title: 'Video Producer & Cinematographer',
   location: 'Buenos Aires, Argentina',
   phone: '+54 9 11 6740-2983',
-  email: 'miltonadrian@gmail.com',
+  email: 'mil.adrianc@gmail.com',
   instagram: '@milton__adrian',
   instagramUrl: 'https://www.instagram.com/milton__adrian',
   youtube: '@miltoncanete9692',

@@ -13,7 +13,7 @@ import { TranslationService } from '../../services/translation.service';
   template: `
     <app-header />
     
-    <main class="min-h-screen pt-20 bg-white dark:bg-gray-900 transition-colors duration-300">
+    <main class="min-h-screen pt-20 bg-white dark:bg-black transition-colors duration-300">
       <section class="container-custom py-16 border-b border-gray-100 dark:border-gray-800">
         <div class="flex flex-col lg:flex-row gap-12 items-start">
           <div class="w-48 h-48 lg:w-64 lg:h-64 border-4 border-black dark:border-white p-1 flex-shrink-0">
@@ -45,60 +45,15 @@ import { TranslationService } from '../../services/translation.service';
       </section>
       
       <section class="container-custom py-16 border-b border-gray-100 dark:border-gray-800">
-        <div class="max-w-3xl">
-          <span class="text-xs font-semibold tracking-widest text-gray-400 dark:text-gray-500 uppercase mb-4 block">{{ t('about.bio') }}</span>
-          <div class="max-w-none">
-            <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6 text-lg">
-              {{ t('about.bioText') }}
-            </p>
-            <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-              {{ t('about.bioExtended1') }}
-            </p>
-            <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-              {{ t('about.bioExtended2') }}
-            </p>
-          </div>
-        </div>
-      </section>
-      
-      <section class="container-custom py-16 border-b border-gray-100 dark:border-gray-800">
-        <span class="text-xs font-semibold tracking-widest text-gray-400 dark:text-gray-500 uppercase mb-8 block">{{ t('about.experience') }}</span>
-        
-        <div class="max-w-3xl space-y-12">
-          <div class="relative pl-8 border-l-2 border-gray-200 dark:border-gray-700">
-            <div class="absolute w-3 h-3 bg-black dark:bg-white rounded-full -left-[7px] top-0"></div>
-            <div class="mb-1">
-              <span class="text-xs font-semibold text-gray-400 dark:text-gray-500">2020 - Present</span>
-            </div>
-            <h3 class="text-xl font-bold mb-1 text-black dark:text-white">{{ t('exp.freelance.title') }}</h3>
-            <p class="text-gray-600 dark:text-gray-400">{{ t('exp.freelance.company') }}</p>
-            <p class="text-gray-500 dark:text-gray-500 mt-2 text-sm">
-              {{ t('exp.freelance.desc') }}
-            </p>
-          </div>
-          
-          <div class="relative pl-8 border-l-2 border-gray-200 dark:border-gray-700">
-            <div class="absolute w-3 h-3 bg-gray-400 dark:bg-gray-500 rounded-full -left-[7px] top-0"></div>
-            <div class="mb-1">
-              <span class="text-xs font-semibold text-gray-400 dark:text-gray-500">2015 - 2020</span>
-            </div>
-            <h3 class="text-xl font-bold mb-1 text-black dark:text-white">{{ t('exp.dp.title') }}</h3>
-            <p class="text-gray-600 dark:text-gray-400">{{ t('exp.dp.company') }}</p>
-            <p class="text-gray-500 dark:text-gray-500 mt-2 text-sm">
-              {{ t('exp.dp.desc') }}
-            </p>
-          </div>
-          
-          <div class="relative pl-8 border-l-2 border-gray-200 dark:border-gray-700">
-            <div class="absolute w-3 h-3 bg-gray-300 dark:bg-gray-600 rounded-full -left-[7px] top-0"></div>
-            <div class="mb-1">
-              <span class="text-xs font-semibold text-gray-400 dark:text-gray-500">2010 - 2015</span>
-            </div>
-            <h3 class="text-xl font-bold mb-1 text-black dark:text-white">{{ t('exp.camera.title') }}</h3>
-            <p class="text-gray-600 dark:text-gray-400">{{ t('exp.camera.company') }}</p>
-            <p class="text-gray-500 dark:text-gray-500 mt-2 text-sm">
-              {{ t('exp.camera.desc') }}
-            </p>
+        <div class="max-w-4xl">
+          <span class="text-xs font-semibold tracking-widest text-gray-400 dark:text-gray-500 uppercase mb-6 block">{{ t('about.bio') }}</span>
+          <div class="text-gray-600 dark:text-gray-300 leading-relaxed space-y-4 text-[15px]">
+            <p [innerHTML]="t('about.bioP1')"></p>
+            <p [innerHTML]="t('about.bioP2')"></p>
+            <p [innerHTML]="t('about.bioP3')"></p>
+            <p [innerHTML]="t('about.bioP4')"></p>
+            <p [innerHTML]="t('about.bioP5')"></p>
+            <p [innerHTML]="t('about.bioP6')"></p>
           </div>
         </div>
       </section>
@@ -106,33 +61,18 @@ import { TranslationService } from '../../services/translation.service';
       <section class="container-custom py-16 border-b border-gray-100 dark:border-gray-800">
         <span class="text-xs font-semibold tracking-widest text-gray-400 dark:text-gray-500 uppercase mb-8 block">{{ t('about.skills') }}</span>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl">
-          <div>
-            <h3 class="font-semibold mb-4 text-black dark:text-white">{{ t('skills.cameraLighting') }}</h3>
-            <ul class="space-y-2 text-gray-600 dark:text-gray-400 text-sm">
-              <li>• {{ t('skills.redArri') }}</li>
-              <li>• {{ t('skills.canonCinema') }}</li>
-              <li>• {{ t('skills.naturalArtificial') }}</li>
-              <li>• {{ t('skills.lightingDesign') }}</li>
-            </ul>
-          </div>
-          <div>
-            <h3 class="font-semibold mb-4 text-black dark:text-white">{{ t('skills.production') }}</h3>
-            <ul class="space-y-2 text-gray-600 dark:text-gray-400 text-sm">
-              <li>• {{ t('skills.musicVideos') }}</li>
-              <li>• {{ t('skills.liveSessionsConcerts') }}</li>
-              <li>• {{ t('skills.documentaries') }}</li>
-              <li>• {{ t('skills.commercialContent') }}</li>
-            </ul>
-          </div>
-          <div>
-            <h3 class="font-semibold mb-4 text-black dark:text-white">{{ t('skills.postProduction') }}</h3>
-            <ul class="space-y-2 text-gray-600 dark:text-gray-400 text-sm">
-              <li>• {{ t('skills.colorGrading') }}</li>
-              <li>• {{ t('skills.editing') }}</li>
-              <li>• {{ t('skills.postSupervision') }}</li>
-              <li>• {{ t('skills.deliveryMastering') }}</li>
-            </ul>
+        <div class="max-w-4xl">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-3 text-gray-600 dark:text-gray-300 text-[15px]">
+            <span>Dirección de Fotografía</span>
+            <span>Dirección de Videoclips</span>
+            <span>Producción Audiovisual</span>
+            <span>Documentales</span>
+            <span>Podcasts</span>
+            <span>Publicidad y contenido para marcas</span>
+            <span>Coberturas en vivo</span>
+            <span>Dirección de cámaras (Broadcast)</span>
+            <span>Operación de cámara</span>
+            <span class="sm:col-span-2 lg:col-span-1">Edición y Color</span>
           </div>
         </div>
       </section>

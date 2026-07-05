@@ -9,16 +9,16 @@ import { TranslationService } from '../../services/translation.service';
   standalone: true,
   imports: [CommonModule, RouterModule],
   template: `
-    <footer class="bg-black dark:bg-gray-950 text-white dark:text-gray-300 py-16 transition-colors duration-300">
+    <footer class="bg-black dark:bg-black text-white dark:text-gray-300 py-16 transition-colors duration-300">
       <div class="container-custom">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
           <div>
             <div class="flex items-center gap-2 mb-4">
               <svg class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <rect x="2" y="5" width="20" height="14" rx="2"/>
-                <circle cx="12" cy="12" r="4"/>
-                <path d="M6 5V3M18 5V3"/>
-                <circle cx="17" cy="7" r="1" fill="currentColor"/>
+                <rect x="2" y="10" width="20" height="9" rx="1"/>
+                <path d="M2 10 L22 10 L16 5 L8 5 Z"/>
+                <rect x="6" y="2.5" width="12" height="2.5" rx="0.6"/>
+                <circle cx="6" cy="10" r="0.9" fill="currentColor"/>
               </svg>
               <div class="flex items-baseline gap-1">
                 <span class="text-lg font-black tracking-tighter">MILTON</span>

@@ -6,6 +6,7 @@ import { FooterComponent } from '../../components/footer/footer.component';
 import { VideoPlayerComponent } from '../../components/video-player/video-player.component';
 import { Project, getProjectById, PROJECTS } from '../../data/projects.data';
 import { TranslationService } from '../../services/translation.service';
+import { YoutubeService } from '../../services/youtube.service';
 
 @Component({
   selector: 'app-project-detail',
@@ -14,7 +15,7 @@ import { TranslationService } from '../../services/translation.service';
   template: `
     <app-header />
     
-    <main class="min-h-screen pt-20 bg-white dark:bg-gray-900 transition-colors duration-300">
+    <main class="min-h-screen pt-20 bg-white dark:bg-black transition-colors duration-300">
       @if (project) {
         <section class="container-custom py-8">
           <a routerLink="/work" class="inline-flex items-center gap-2 text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors mb-6">
@@ -37,14 +38,8 @@ import { TranslationService } from '../../services/translation.service';
           <div class="max-w-3xl">
             <div class="flex items-center gap-3 text-sm text-gray-500 dark:text-gray-400 mb-4">
               <span class="px-3 py-1 bg-black dark:bg-white text-white dark:text-black text-xs font-medium">{{ project.category }}</span>
-              <span>{{ project.year }}</span>
             </div>
             
-            <h1 class="text-4xl lg:text-5xl font-black tracking-tight mb-6 text-black dark:text-white">{{ project.title }}</h1>
-            
-            <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-8">
-              {{ project.description }}
-            </p>
             
             <div class="flex flex-wrap gap-4 pt-8 border-t border-gray-200 dark:border-gray-700">
               @if (previousProject) {
@@ -95,6 +90,8 @@ export class ProjectDetailComponent implements OnInit {
     return this.translationService.t(key);
   }
 
+  youtubeService = inject(YoutubeService);
+
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
@@ -104,6 +101,11 @@ export class ProjectDetailComponent implements OnInit {
         const currentIndex = PROJECTS.findIndex(p => p.id === this.project!.id);
         this.previousProject = currentIndex > 0 ? PROJECTS[currentIndex - 1] : undefined;
         this.nextProject = currentIndex < PROJECTS.length - 1 ? PROJECTS[currentIndex + 1] : undefined;
+        if (!this.project.title) {
+          this.youtubeService.ensureTitle(this.project.videoUrl).then(title => {
+            if (title) this.project!.title = title;
+          });
+        }
       }
     }
   }

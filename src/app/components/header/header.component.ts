@@ -10,18 +10,18 @@ import { TranslationService } from '../../services/translation.service';
   standalone: true,
   imports: [CommonModule, RouterModule],
   template: `
-    <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/90 dark:bg-gray-900/90 border-b border-gray-200 dark:border-gray-700/50 transition-all duration-300">
-      <nav class="container-custom flex items-center justify-between h-16">
+    <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/90 dark:bg-black/90 border-b border-gray-200 dark:border-gray-700/50 transition-all duration-300">
+      <nav class="w-full px-4 flex items-center justify-between h-16">
         <a routerLink="/" class="group flex items-center gap-3 py-2">
           <div class="relative w-10 h-10 flex items-center justify-center">
             <svg class="w-9 h-9 text-black dark:text-white transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <rect x="2" y="5" width="20" height="14" rx="2"/>
-              <circle cx="12" cy="12" r="3.5"/>
-              <path d="M6 5V4M18 5V4"/>
-              <circle cx="17" cy="6.5" r="1" fill="currentColor"/>
+              <rect x="2" y="10" width="20" height="9" rx="1"/>
+              <path d="M2 10 L22 10 L16 5 L8 5 Z"/>
+              <rect x="6" y="2.5" width="12" height="2.5" rx="0.6"/>
+              <circle cx="6" cy="10" r="0.9" fill="currentColor"/>
             </svg>
           </div>
-          <div class="flex items-baseline gap-0.5">
+          <div class="flex items-baseline gap-1.5">
             <span class="text-lg font-black tracking-tighter text-black dark:text-white font-['Inter']">
               MILTON
             </span>
@@ -35,28 +35,28 @@ import { TranslationService } from '../../services/translation.service';
         </a>
         
         <div class="flex items-center gap-2">
-          <ul class="hidden md:flex items-center bg-gray-100 dark:bg-gray-800/50 rounded-full px-1 py-1 gap-1">
+          <ul class="hidden md:flex items-center">
             <li>
               <a routerLink="/work" 
-                 routerLinkActive="bg-black dark:bg-white text-white dark:text-black shadow-sm" 
+                 routerLinkActive="text-black dark:text-white font-semibold shadow-[0_0_12px_rgba(0,0,0,0.12)] dark:shadow-[0_0_12px_rgba(255,255,255,0.2)]" 
                  [routerLinkActiveOptions]="{exact: true}"
-                 class="px-4 py-2 text-sm font-medium rounded-full tracking-wide transition-all duration-200 text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white">
+                 class="px-3 py-1.5 text-xs font-medium uppercase tracking-widest transition-all duration-200 text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white">
                 {{ t('nav.work') }}
               </a>
             </li>
             <li>
               <a routerLink="/about" 
-                 routerLinkActive="bg-black dark:bg-white text-white dark:text-black shadow-sm" 
+                 routerLinkActive="text-black dark:text-white font-semibold shadow-[0_0_12px_rgba(0,0,0,0.12)] dark:shadow-[0_0_12px_rgba(255,255,255,0.2)]" 
                  [routerLinkActiveOptions]="{exact: true}"
-                 class="px-4 py-2 text-sm font-medium rounded-full tracking-wide transition-all duration-200 text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white">
+                 class="px-3 py-1.5 text-xs font-medium uppercase tracking-widest transition-all duration-200 text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white">
                 {{ t('nav.about') }}
               </a>
             </li>
             <li>
               <a routerLink="/contact" 
-                 routerLinkActive="bg-black dark:bg-white text-white dark:text-black shadow-sm" 
+                 routerLinkActive="text-black dark:text-white font-semibold shadow-[0_0_12px_rgba(0,0,0,0.12)] dark:shadow-[0_0_12px_rgba(255,255,255,0.2)]" 
                  [routerLinkActiveOptions]="{exact: true}"
-                 class="px-4 py-2 text-sm font-medium rounded-full tracking-wide transition-all duration-200 text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white">
+                 class="px-3 py-1.5 text-xs font-medium uppercase tracking-widest transition-all duration-200 text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white">
                 {{ t('nav.contact') }}
               </a>
             </li>

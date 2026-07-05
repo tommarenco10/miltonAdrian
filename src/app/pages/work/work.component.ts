@@ -6,6 +6,7 @@ import { FooterComponent } from '../../components/footer/footer.component';
 import { ProjectCardComponent } from '../../components/project-card/project-card.component';
 import { Category, Project, getAllCategories, PROJECTS, getProjectsByCategory } from '../../data/projects.data';
 import { TranslationService } from '../../services/translation.service';
+import { YoutubeService } from '../../services/youtube.service';
 
 @Component({
   selector: 'app-work',
@@ -14,7 +15,7 @@ import { TranslationService } from '../../services/translation.service';
   template: `
     <app-header />
     
-    <main class="min-h-screen pt-20 bg-white dark:bg-gray-900 transition-colors duration-300">
+    <main class="min-h-screen pt-20 bg-white dark:bg-black transition-colors duration-300">
       <section class="container-custom py-16 border-b border-gray-100 dark:border-gray-800">
         <h1 class="text-5xl lg:text-6xl font-black tracking-tighter mb-4">
           <span class="block text-black dark:text-white">{{ t('work.title') }}</span>
@@ -46,13 +47,20 @@ import { TranslationService } from '../../services/translation.service';
             <h2 class="text-2xl font-bold tracking-tight mb-8 pb-4 border-b-2 border-black dark:border-white">
               {{ tCategory(selectedCategory) }}
             </h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              @for (project of filteredProjects; track project.id) {
-                <app-project-card 
-                  [project]="project"
-                  (onSelect)="onProjectSelect($event)" />
-              }
-            </div>
+            @for (group of getFilteredGroups(); track group.name) {
+              <div class="mb-10">
+                <h3 class="text-lg font-bold tracking-tight mb-6 pb-3 border-b-2 border-gray-300 dark:border-gray-700">
+                  {{ group.name }}
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                  @for (project of group.projects; track project.id) {
+                    <app-project-card 
+                      [project]="project"
+                      (onSelect)="onProjectSelect($event)" />
+                  }
+                </div>
+              </div>
+            }
           </div>
         } @else {
           @for (category of categories; track category.slug) {
@@ -95,9 +103,12 @@ export class WorkComponent implements OnInit {
     'podcasts': 'category.podcasts'
   };
 
+  youtubeService = inject(YoutubeService);
+
   ngOnInit(): void {
     this.categories = getAllCategories();
     this.projects = PROJECTS;
+    this.youtubeService.populateTitles(this.projects);
   }
 
   t(key: string): string {
@@ -120,6 +131,16 @@ export class WorkComponent implements OnInit {
     } else {
       this.filteredProjects = [];
     }
+  }
+
+  getFilteredGroups(): { name: string; projects: Project[] }[] {
+    const groups = new Map<string, Project[]>();
+    for (const project of this.filteredProjects) {
+      const key = project.group || 'Otros';
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key)!.push(project);
+    }
+    return Array.from(groups.entries()).map(([name, projects]) => ({ name, projects }));
   }
 
   getFilterButtonClass(slug: string | null): string {

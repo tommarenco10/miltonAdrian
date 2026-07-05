@@ -7,29 +7,37 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="relative aspect-video bg-black">
+    <div class="relative bg-black rounded-lg overflow-hidden border-2 border-gray-800 dark:border-gray-700 shadow-2xl">
+      <!-- Letterbox top bar -->
+      <div class="absolute top-0 left-0 right-0 h-3 bg-black z-20"></div>
       @if (!isPlaying) {
-        <div class="absolute inset-0 flex items-center justify-center cursor-pointer" (click)="play()">
+        <div class="relative aspect-video pt-3 cursor-pointer" (click)="play()">
           @if (thumbnailUrl) {
             <img [src]="thumbnailUrl" [alt]="title" class="absolute inset-0 w-full h-full object-cover">
           }
-          <div class="absolute inset-0 bg-black/40"></div>
-          <button class="relative z-10 w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/30 transition-colors">
-            <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M8 5v14l11-7z"/>
-            </svg>
-          </button>
+          <div class="absolute inset-0 bg-black/50"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <button class="w-20 h-20 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center hover:bg-white/20 transition-all duration-300 border-2 border-white/30">
+              <svg class="w-10 h-10 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </button>
+          </div>
         </div>
       } @else {
-        <iframe
-          #youtubeIframe
-          [src]="safeEmbedUrl"
-          class="absolute inset-0 w-full h-full"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-        </iframe>
+        <div class="relative aspect-video pt-3">
+          <iframe
+            #youtubeIframe
+            [src]="safeEmbedUrl"
+            class="absolute inset-0 w-full h-full"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
       }
+      <!-- Letterbox bottom bar -->
+      <div class="absolute bottom-0 left-0 right-0 h-3 bg-black z-20"></div>
     </div>
   `
 })

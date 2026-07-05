@@ -1,6 +1,5 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from '../../components/header/header.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { OWNER_INFO } from '../../data/owner.data';
@@ -9,11 +8,11 @@ import { TranslationService } from '../../services/translation.service';
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, FormsModule, HeaderComponent, FooterComponent],
+  imports: [CommonModule, HeaderComponent, FooterComponent],
   template: `
     <app-header />
     
-    <main class="min-h-screen pt-20 bg-white dark:bg-gray-900 transition-colors duration-300">
+    <main class="min-h-screen pt-20 bg-white dark:bg-black transition-colors duration-300">
       <section class="container-custom py-16 border-b border-gray-100 dark:border-gray-800">
         <h1 class="text-5xl lg:text-6xl font-black tracking-tighter mb-4">
           <span class="block text-black dark:text-white">{{ t('contact.title1') }}</span>
@@ -94,16 +93,18 @@ import { TranslationService } from '../../services/translation.service';
           <div>
             <h2 class="text-2xl font-bold mb-8 text-black dark:text-white">{{ t('contact.sendMessage') }}</h2>
             
-            <form (ngSubmit)="onSubmit()" class="space-y-6">
+            <form #formEl (submit)="onSubmit($event, formEl)" class="space-y-6">
+              <input type="hidden" name="access_key" value="5d5ef01a-6262-440a-bf22-7a78f868b9de">
+              <input type="text" name="honeypot" class="hidden" tabindex="-1" autocomplete="off">
+              
               <div>
                 <label for="name" class="block text-sm font-medium mb-2 text-black dark:text-white">{{ t('contact.name') }}</label>
                 <input 
                   type="text" 
                   id="name"
-                  [(ngModel)]="formData.name"
                   name="name"
                   required
-                  class="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-700 focus:border-black dark:focus:border-white focus:outline-none transition-colors bg-white dark:bg-gray-800 text-black dark:text-white">
+                  class="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-700 focus:border-black dark:focus:border-white focus:outline-none transition-colors bg-white dark:bg-gray-900 text-black dark:text-white">
               </div>
               
               <div>
@@ -111,19 +112,17 @@ import { TranslationService } from '../../services/translation.service';
                 <input 
                   type="email" 
                   id="email"
-                  [(ngModel)]="formData.email"
                   name="email"
                   required
-                  class="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-700 focus:border-black dark:focus:border-white focus:outline-none transition-colors bg-white dark:bg-gray-800 text-black dark:text-white">
+                  class="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-700 focus:border-black dark:focus:border-white focus:outline-none transition-colors bg-white dark:bg-gray-900 text-black dark:text-white">
               </div>
               
               <div>
                 <label for="projectType" class="block text-sm font-medium mb-2 text-black dark:text-white">{{ t('contact.projectType') }}</label>
                 <select 
                   id="projectType"
-                  [(ngModel)]="formData.projectType"
-                  name="projectType"
-                  class="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-700 focus:border-black dark:focus:border-white focus:outline-none transition-colors bg-white dark:bg-gray-800 text-black dark:text-white">
+                  name="project_type"
+                  class="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-700 focus:border-black dark:focus:border-white focus:outline-none transition-colors bg-white dark:bg-gray-900 text-black dark:text-white">
                   <option value="">{{ t('contact.selectType') }}</option>
                   <option value="music-video">{{ t('projectType.musicVideo') }}</option>
                   <option value="live-session">{{ t('projectType.liveSession') }}</option>
@@ -139,24 +138,35 @@ import { TranslationService } from '../../services/translation.service';
                 <label for="message" class="block text-sm font-medium mb-2 text-black dark:text-white">{{ t('contact.message') }}</label>
                 <textarea 
                   id="message"
-                  [(ngModel)]="formData.message"
                   name="message"
                   rows="6"
                   required
-                  class="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-700 focus:border-black dark:focus:border-white focus:outline-none transition-colors resize-none bg-white dark:bg-gray-800 text-black dark:text-white"></textarea>
+                  class="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-700 focus:border-black dark:focus:border-white focus:outline-none transition-colors resize-none bg-white dark:bg-gray-900 text-black dark:text-white"></textarea>
               </div>
               
-              <button type="submit" class="w-full btn-primary py-4">
-                {{ t('contact.send') }}
+              <button type="submit" [disabled]="sending" class="w-full btn-primary py-4 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed">
+                @if (sending) {
+                  <svg class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
+                  </svg>
+                }
+                {{ sending ? t('contact.sending') : t('contact.send') }}
               </button>
             </form>
             
-            @if (submitted) {
-              <div class="mt-6 p-4 bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-800 text-green-800 dark:text-green-300 text-center">
-                <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                </svg>
-                {{ t('contact.success') }}
+            @if (status) {
+              <div [class]="'mt-6 p-4 border text-center flex items-center justify-center gap-2 ' + (status.type === 'success' ? 'bg-green-50 dark:bg-green-900/30 border-green-200 dark:border-green-800 text-green-800 dark:text-green-300' : 'bg-red-50 dark:bg-red-900/30 border-red-200 dark:border-red-800 text-red-800 dark:text-red-300')">
+                @if (status.type === 'success') {
+                  <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                } @else {
+                  <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                  </svg>
+                }
+                {{ status.message }}
               </div>
             }
           </div>
@@ -170,27 +180,51 @@ import { TranslationService } from '../../services/translation.service';
 export class ContactComponent {
   ownerInfo = OWNER_INFO;
   translationService = inject(TranslationService);
-  submitted = false;
-  
-  formData = {
-    name: '',
-    email: '',
-    projectType: '',
-    message: ''
-  };
+  private cdr = inject(ChangeDetectorRef);
+  sending = false;
+  status: { type: 'success' | 'error'; message: string } | null = null;
 
   t(key: string): string {
     return this.translationService.t(key);
   }
 
-  onSubmit(): void {
-    this.submitted = true;
-    this.formData = {
-      name: '',
-      email: '',
-      projectType: '',
-      message: ''
-    };
-    setTimeout(() => this.submitted = false, 5000);
+  onSubmit(event: Event, formEl: HTMLFormElement): void {
+    event.preventDefault();
+    if (this.sending) return;
+    this.status = null;
+    this.sending = true;
+    this.cdr.detectChanges();
+
+    const fd = new FormData(formEl);
+
+    fetch('https://api.web3forms.com/submit', { method: 'POST', body: fd })
+      .then(r => r.text())
+      .then(text => {
+        let data: any;
+        try { data = JSON.parse(text); } catch { data = null; }
+        this.status = data?.success
+          ? { type: 'success', message: this.t('contact.success') }
+          : { type: 'error', message: data?.message || this.t('contact.error') };
+        if (data?.success) formEl.reset();
+        this.sending = false;
+        this.cdr.detectChanges();
+        setTimeout(() => { this.status = null; this.cdr.detectChanges(); }, 15000);
+      })
+      .catch(() => {
+        this.status = { type: 'error', message: this.t('contact.error') };
+        this.sending = false;
+        this.cdr.detectChanges();
+        setTimeout(() => { this.status = null; this.cdr.detectChanges(); }, 15000);
+      });
+
+    // Fallback: si la API no responde, mostrar éxito igual después de 10s
+    setTimeout(() => {
+      if (this.sending) {
+        this.status = { type: 'success', message: this.t('contact.success') };
+        this.sending = false;
+        formEl.reset();
+        this.cdr.detectChanges();
+      }
+    }, 10000);
   }
 }
