@@ -34,7 +34,7 @@ import { YoutubeService } from '../../services/youtube.service';
           </div>
         </section>
         
-        <section class="container-custom py-8 border-t border-gray-100 dark:border-gray-800">
+        <section class="container-custom py-8 border-t border-gray-100 dark:border-gray-700">
           <div class="max-w-3xl">
             <div class="flex items-center gap-3 text-sm text-gray-500 dark:text-gray-400 mb-4">
               <span class="px-3 py-1 bg-black dark:bg-white text-white dark:text-black text-xs font-medium">{{ project.category }}</span>

@@ -13,7 +13,7 @@ import { TranslationService } from '../../services/translation.service';
     <app-header />
     
     <main class="min-h-screen pt-20 bg-white dark:bg-black transition-colors duration-300">
-      <section class="container-custom py-16 border-b border-gray-100 dark:border-gray-800">
+      <section class="container-custom py-16 border-b border-gray-100 dark:border-gray-700">
         <h1 class="text-5xl lg:text-6xl font-black tracking-tighter mb-4">
           <span class="block text-black dark:text-white">{{ t('contact.title1') }}</span>
           <span class="block text-gray-400 dark:text-gray-500">{{ t('contact.title2') }}</span>

@@ -14,12 +14,7 @@ import { TranslationService } from '../../services/translation.service';
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
           <div>
             <div class="flex items-center gap-2 mb-4">
-              <svg class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <rect x="2" y="10" width="20" height="9" rx="1"/>
-                <path d="M2 10 L22 10 L16 5 L8 5 Z"/>
-                <rect x="6" y="2.5" width="12" height="2.5" rx="0.6"/>
-                <circle cx="6" cy="10" r="0.9" fill="currentColor"/>
-              </svg>
+              <img src="assets/FilmCameraWhite.png" class="w-8 h-8 object-contain -mt-1.5" alt="Film Camera"/>
               <div class="flex items-baseline gap-1">
                 <span class="text-lg font-black tracking-tighter">MILTON</span>
                 <span class="text-lg font-light tracking-tight text-gray-400">ADRIAN</span>

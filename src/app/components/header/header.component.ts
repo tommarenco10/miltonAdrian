@@ -10,17 +10,11 @@ import { TranslationService } from '../../services/translation.service';
   standalone: true,
   imports: [CommonModule, RouterModule],
   template: `
-    <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/90 dark:bg-black/90 border-b border-gray-200 dark:border-gray-700/50 transition-all duration-300">
+    <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/90 dark:bg-black/90 border-b border-gray-200 dark:border-gray-600/60 transition-all duration-300">
       <nav class="w-full px-4 flex items-center justify-between h-16">
         <a routerLink="/" class="group flex items-center gap-3 py-2">
-          <div class="relative w-10 h-10 flex items-center justify-center">
-            <svg class="w-9 h-9 text-black dark:text-white transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <rect x="2" y="10" width="20" height="9" rx="1"/>
-              <path d="M2 10 L22 10 L16 5 L8 5 Z"/>
-              <rect x="6" y="2.5" width="12" height="2.5" rx="0.6"/>
-              <circle cx="6" cy="10" r="0.9" fill="currentColor"/>
-            </svg>
-          </div>
+          <img src="assets/FilmCameraBlack.png" class="w-9 h-9 object-contain block dark:hidden transition-transform duration-300 group-hover:scale-110 -mt-1.5" alt="Film Camera"/>
+          <img src="assets/FilmCameraWhite.png" class="w-9 h-9 object-contain hidden dark:block transition-transform duration-300 group-hover:scale-110 -mt-1.5" alt="Film Camera"/>
           <div class="flex items-baseline gap-1.5">
             <span class="text-lg font-black tracking-tighter text-black dark:text-white font-['Inter']">
               MILTON

@@ -17,7 +17,7 @@ import { YoutubeService } from '../../services/youtube.service';
     <app-header />
     
     <main class="min-h-screen pt-20 bg-white dark:bg-black transition-colors duration-300">
-      <section class="w-full py-20 lg:py-28 border-b border-gray-200 dark:border-gray-800">
+      <section class="w-full py-20 lg:py-28 border-b border-gray-200 dark:border-gray-700">
         <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start pl-4 pr-4">
           <div class="w-36 h-36 lg:w-52 lg:h-52 flex-shrink-0 border-4 border-black dark:border-white p-1">
             <img 
@@ -53,7 +53,7 @@ import { YoutubeService } from '../../services/youtube.service';
         </div>
       </section>
 
-      <section class="w-full py-16 border-b border-gray-200 dark:border-gray-800">
+      <section class="w-full py-16 border-b border-gray-200 dark:border-gray-700">
         <div class="pl-4 pr-4 mb-8 flex items-center justify-between">
           <h2 class="text-2xl font-bold tracking-tight text-black dark:text-white">{{ t('home.featuredWork') }}</h2>
           <a routerLink="/work" class="text-sm text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors flex items-center gap-1">
@@ -75,7 +75,7 @@ import { YoutubeService } from '../../services/youtube.service';
         </div>
       </section>
       
-      <section class="w-full border-b border-gray-200 dark:border-gray-800">
+      <section class="w-full border-b border-gray-200 dark:border-gray-700">
         <div class="flex flex-col lg:flex-row gap-0">
           <div class="flex-1 flex flex-col items-center py-16 px-4 lg:pr-12 lg:border-r border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-zinc-900/50">
             <span class="text-xs font-semibold tracking-widest text-gray-400 dark:text-gray-500 uppercase mb-4 text-center">{{ t('about.bio') }}</span>

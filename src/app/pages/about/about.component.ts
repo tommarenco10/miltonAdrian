@@ -14,7 +14,7 @@ import { TranslationService } from '../../services/translation.service';
     <app-header />
     
     <main class="min-h-screen pt-20 bg-white dark:bg-black transition-colors duration-300">
-      <section class="container-custom py-16 border-b border-gray-100 dark:border-gray-800">
+      <section class="container-custom py-16 border-b border-gray-100 dark:border-gray-700">
         <div class="flex flex-col lg:flex-row gap-12 items-start">
           <div class="w-48 h-48 lg:w-64 lg:h-64 border-4 border-black dark:border-white p-1 flex-shrink-0">
             <img 
@@ -44,7 +44,7 @@ import { TranslationService } from '../../services/translation.service';
         </div>
       </section>
       
-      <section class="container-custom py-16 border-b border-gray-100 dark:border-gray-800">
+      <section class="container-custom py-16 border-b border-gray-100 dark:border-gray-700">
         <div class="max-w-4xl">
           <span class="text-xs font-semibold tracking-widest text-gray-400 dark:text-gray-500 uppercase mb-6 block">{{ t('about.bio') }}</span>
           <div class="text-gray-600 dark:text-gray-300 leading-relaxed space-y-4 text-[15px]">
@@ -58,7 +58,7 @@ import { TranslationService } from '../../services/translation.service';
         </div>
       </section>
       
-      <section class="container-custom py-16 border-b border-gray-100 dark:border-gray-800">
+      <section class="container-custom py-16 border-b border-gray-100 dark:border-gray-700">
         <span class="text-xs font-semibold tracking-widest text-gray-400 dark:text-gray-500 uppercase mb-8 block">{{ t('about.skills') }}</span>
         
         <div class="max-w-4xl">
