@@ -86,6 +86,7 @@ export class CinematicCursorComponent implements OnInit, OnDestroy, AfterViewIni
     document.addEventListener('mouseover', this.onMouseOver);
     document.addEventListener('mouseout', this.onMouseOut);
     document.addEventListener('click', this.onClick);
+    document.addEventListener('visibilitychange', this.onVisibilityChange);
   }
 
   private unbindEvents() {
@@ -93,11 +94,20 @@ export class CinematicCursorComponent implements OnInit, OnDestroy, AfterViewIni
     document.removeEventListener('mouseover', this.onMouseOver);
     document.removeEventListener('mouseout', this.onMouseOut);
     document.removeEventListener('click', this.onClick);
+    document.removeEventListener('visibilitychange', this.onVisibilityChange);
   }
 
   private onMouseMove = (e: MouseEvent) => {
     this.mouse.x = e.clientX;
     this.mouse.y = e.clientY;
+  };
+
+  private onVisibilityChange = () => {
+    if (document.visibilityState === 'visible') {
+      if (this.simpleReel?.nativeElement && this.detailedReel?.nativeElement) {
+        this.startContinuousRotation(this.simpleReel.nativeElement, this.detailedReel.nativeElement);
+      }
+    }
   };
 
   private getCursorTarget(el: HTMLElement): HTMLElement | null {
