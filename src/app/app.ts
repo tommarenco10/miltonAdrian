@@ -2,10 +2,11 @@ import { Component, signal, OnInit } from '@angular/core';
 import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { filter } from 'rxjs/operators';
+import { CinematicCursorComponent } from './components/cinematic-cursor/cinematic-cursor.component';
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, RouterOutlet],
+  imports: [CommonModule, RouterOutlet, CinematicCursorComponent],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

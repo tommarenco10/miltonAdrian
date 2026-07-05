@@ -44,7 +44,7 @@ const TRANSLATIONS: Translations = {
   'about.collaboration': { es: 'Interesado en colaborar en tu proximo proyecto? Siempre estoy abierto a discutir nuevas oportunidades.', en: 'Interested in collaborating on your next project? I am always open to discussing new opportunities.' },
   'about.emailMe': { es: 'Escribeme', en: 'Email Me' },
   'about.followInstagram': { es: 'Seguir en Instagram', en: 'Follow on Instagram' },
-  'contact.title1': { es: 'PONTE EN', en: 'GET IN' },
+  'contact.title1': { es: 'PONETE EN', en: 'GET IN' },
   'contact.title2': { es: 'CONTACTO', en: 'TOUCH' },
   'contact.subtitle': { es: 'Tienes un proyecto en mente? Creemos algo increible juntos.', en: 'Have a project in mind? Lets create something amazing together.' },
   'contact.info': { es: 'Informacion de Contacto', en: 'Contact Information' },
@@ -83,6 +83,16 @@ const TRANSLATIONS: Translations = {
   'category.deportes': { es: 'Deportes', en: 'Sports' },
   'category.socialMedia': { es: 'Redes Sociales', en: 'Social Media' },
   'category.podcasts': { es: 'Podcasts', en: 'Podcasts' },
+  'about.skill1': { es: 'Dirección de Fotografía', en: 'Director of Photography' },
+  'about.skill2': { es: 'Dirección de Videoclips', en: 'Music Video Direction' },
+  'about.skill3': { es: 'Producción Audiovisual', en: 'Audiovisual Production' },
+  'about.skill4': { es: 'Documentales', en: 'Documentary Filmmaking' },
+  'about.skill5': { es: 'Podcasts', en: 'Podcast Production' },
+  'about.skill6': { es: 'Publicidad y contenido para marcas', en: 'Commercials & Branded Content' },
+  'about.skill7': { es: 'Coberturas en vivo', en: 'Live Event Coverage' },
+  'about.skill8': { es: 'Dirección de cámaras (Broadcast)', en: 'Broadcast Camera Direction' },
+  'about.skill9': { es: 'Operación de cámara', en: 'Camera Operation' },
+  'about.skill10': { es: 'Edición y Color', en: 'Video Editing & Color Grading' },
 };
 
 @Injectable({

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal, computed, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { OWNER_INFO } from '../../data/owner.data';
@@ -10,7 +10,8 @@ import { TranslationService } from '../../services/translation.service';
   standalone: true,
   imports: [CommonModule, RouterModule],
   template: `
-    <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/90 dark:bg-black/90 border-b border-gray-200 dark:border-gray-600/60 transition-all duration-300">
+    <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b border-gray-200 dark:border-gray-600/60 transition-all duration-300"
+            [style.background-color]="navbarBg()">
       <nav class="w-full px-4 flex items-center justify-between h-16">
         <a routerLink="/" class="group flex items-center gap-3 py-2">
           <img src="assets/FilmCameraBlack.png" class="w-9 h-9 object-contain block dark:hidden transition-transform duration-300 group-hover:scale-110 -mt-1.5" alt="Film Camera"/>
@@ -108,6 +109,20 @@ export class HeaderComponent {
   themeService = inject(ThemeService);
   translationService = inject(TranslationService);
   ownerInfo = OWNER_INFO;
+  isScrolled = signal(false);
+  
+  navbarBg = computed(() => {
+    const isDark = this.themeService.isDark();
+    if (this.isScrolled()) {
+      return isDark ? 'rgba(0,0,0,0.7)' : 'rgba(255,255,255,0.7)';
+    }
+    return isDark ? 'rgba(0,0,0,0.95)' : 'rgba(255,255,255,0.95)';
+  });
+
+  @HostListener('window:scroll')
+  onScroll(): void {
+    this.isScrolled.set(window.scrollY > 20);
+  }
   
   t(key: string): string {
     return this.translationService.t(key);

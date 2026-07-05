@@ -8,6 +8,7 @@ import { Project } from '../../models/project.model';
   imports: [CommonModule],
   template: `
     <article
+      data-cursor="project"
       class="group cursor-pointer"
       (click)="onSelect.emit(project)">
       <div class="relative overflow-hidden rounded-lg border-2 border-transparent dark:border-gray-800 group-hover:border-white/50 transition-all duration-300 shadow-lg group-hover:shadow-2xl">

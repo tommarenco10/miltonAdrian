@@ -27,7 +27,7 @@ import { YoutubeService } from '../../services/youtube.service';
         </section>
         
         <section class="container-custom pb-8">
-          <div class="aspect-video bg-black dark:bg-black max-w-5xl">
+          <div class="aspect-video bg-black dark:bg-black max-w-5xl mx-auto">
             <app-video-player 
               [videoUrl]="project.videoUrl"
               [title]="project.title" />
@@ -35,13 +35,13 @@ import { YoutubeService } from '../../services/youtube.service';
         </section>
         
         <section class="container-custom py-8 border-t border-gray-100 dark:border-gray-700">
-          <div class="max-w-3xl">
+          <div class="max-w-5xl mx-auto">
             <div class="flex items-center gap-3 text-sm text-gray-500 dark:text-gray-400 mb-4">
               <span class="px-3 py-1 bg-black dark:bg-white text-white dark:text-black text-xs font-medium">{{ project.category }}</span>
             </div>
             
             
-            <div class="flex flex-wrap gap-4 pt-8 border-t border-gray-200 dark:border-gray-700">
+            <div class="flex flex-wrap gap-4 pt-8 border-t border-gray-200 dark:border-gray-700 justify-center">
               @if (previousProject) {
                 <a [href]="'/work/' + previousProject.id" class="inline-flex items-center gap-2 border-2 border-black dark:border-white px-6 py-3 font-medium text-black dark:text-white hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-colors">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

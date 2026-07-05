@@ -16,11 +16,11 @@ import { TranslationService } from '../../services/translation.service';
     <main class="min-h-screen pt-20 bg-white dark:bg-black transition-colors duration-300">
       <section class="container-custom py-16 border-b border-gray-100 dark:border-gray-700">
         <div class="flex flex-col lg:flex-row gap-12 items-start">
-          <div class="w-48 h-48 lg:w-64 lg:h-64 border-4 border-black dark:border-white p-1 flex-shrink-0">
+          <div class="w-48 h-48 lg:w-64 lg:h-64 flex-shrink-0" style="cursor: url('assets/cursor/rockOnCursor.cur'), auto">
             <img 
-              [src]="ownerInfo.profileImage" 
+              [src]="ownerInfo.bioImage"
               [alt]="ownerInfo.name"
-              class="w-full h-full object-cover grayscale">
+              class="w-full h-full object-cover">
           </div>
           
           <div class="flex-1 pt-4">
@@ -45,9 +45,8 @@ import { TranslationService } from '../../services/translation.service';
       </section>
       
       <section class="container-custom py-16 border-b border-gray-100 dark:border-gray-700">
-        <div class="max-w-4xl">
-          <span class="text-xs font-semibold tracking-widest text-gray-400 dark:text-gray-500 uppercase mb-6 block">{{ t('about.bio') }}</span>
-          <div class="text-gray-600 dark:text-gray-300 leading-relaxed space-y-4 text-[15px]">
+        <span class="text-xs font-semibold tracking-widest text-gray-400 dark:text-gray-500 uppercase mb-6 block">{{ t('about.bio') }}</span>
+        <div class="text-gray-600 dark:text-gray-300 leading-relaxed space-y-4 text-[15px]">
             <p [innerHTML]="t('about.bioP1')"></p>
             <p [innerHTML]="t('about.bioP2')"></p>
             <p [innerHTML]="t('about.bioP3')"></p>
@@ -55,32 +54,28 @@ import { TranslationService } from '../../services/translation.service';
             <p [innerHTML]="t('about.bioP5')"></p>
             <p [innerHTML]="t('about.bioP6')"></p>
           </div>
-        </div>
       </section>
       
       <section class="container-custom py-16 border-b border-gray-100 dark:border-gray-700">
         <span class="text-xs font-semibold tracking-widest text-gray-400 dark:text-gray-500 uppercase mb-8 block">{{ t('about.skills') }}</span>
         
-        <div class="max-w-4xl">
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-3 text-gray-600 dark:text-gray-300 text-[15px]">
-            <span>Dirección de Fotografía</span>
-            <span>Dirección de Videoclips</span>
-            <span>Producción Audiovisual</span>
-            <span>Documentales</span>
-            <span>Podcasts</span>
-            <span>Publicidad y contenido para marcas</span>
-            <span>Coberturas en vivo</span>
-            <span>Dirección de cámaras (Broadcast)</span>
-            <span>Operación de cámara</span>
-            <span class="sm:col-span-2 lg:col-span-1">Edición y Color</span>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-3 text-gray-600 dark:text-gray-300 text-[15px]">
+            <span>{{ t('about.skill1') }}</span>
+            <span>{{ t('about.skill2') }}</span>
+            <span>{{ t('about.skill3') }}</span>
+            <span>{{ t('about.skill4') }}</span>
+            <span>{{ t('about.skill5') }}</span>
+            <span>{{ t('about.skill6') }}</span>
+            <span>{{ t('about.skill7') }}</span>
+            <span>{{ t('about.skill8') }}</span>
+            <span>{{ t('about.skill9') }}</span>
+            <span class="sm:col-span-2 lg:col-span-1">{{ t('about.skill10') }}</span>
           </div>
-        </div>
       </section>
       
       <section class="container-custom py-16 bg-black dark:bg-white text-white dark:text-black transition-colors duration-300">
-        <div class="max-w-2xl">
-          <span class="text-xs font-semibold tracking-widest text-gray-400 dark:text-gray-500 uppercase mb-4 block">{{ t('about.connect') }}</span>
-          <h2 class="text-3xl font-bold mb-4">{{ t('about.letsWorkTogether') }}</h2>
+        <span class="text-xs font-semibold tracking-widest text-gray-400 dark:text-gray-500 uppercase mb-4 block">{{ t('about.connect') }}</span>
+        <h2 class="text-3xl font-bold mb-4">{{ t('about.letsWorkTogether') }}</h2>
           <p class="mb-8 text-gray-400 dark:text-gray-700">
             {{ t('about.collaboration') }}
           </p>
@@ -98,7 +93,6 @@ import { TranslationService } from '../../services/translation.service';
               {{ t('about.followInstagram') }}
             </a>
           </div>
-        </div>
       </section>
     </main>
     

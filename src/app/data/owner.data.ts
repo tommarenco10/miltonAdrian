@@ -9,6 +9,7 @@ export interface OwnerInfo {
   youtube: string;
   youtubeUrl: string;
   profileImage: string;
+  bioImage: string;
   bio: string;
 }
 
@@ -23,5 +24,6 @@ export const OWNER_INFO: OwnerInfo = {
   youtube: '@miltoncanete9692',
   youtubeUrl: 'https://www.youtube.com/@miltoncanete9692',
   profileImage: 'assets/portfolioImage.png',
+  bioImage: 'assets/bioImage.jpg',
   bio: 'Milton Adrian Cañete is a video producer and cinematographer based in Buenos Aires with experience in music videos, live sessions, feature films, documentaries, and commercial content.'
 };

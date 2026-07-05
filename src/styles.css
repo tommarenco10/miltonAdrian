@@ -144,7 +144,7 @@
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
 }
 
-/* Subtle scale on hover */
+/* Hover scale on hover */
 .hover-scale {
   transition: transform 0.3s ease;
 }
@@ -152,3 +152,5 @@
 .hover-scale:hover {
   transform: scale(1.02);
 }
+
+/* Film reel cursor appears only on project card hover */

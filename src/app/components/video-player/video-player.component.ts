@@ -7,11 +7,11 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="relative bg-black rounded-lg overflow-hidden border-2 border-gray-800 dark:border-gray-700 shadow-2xl">
+    <div class="relative bg-black overflow-hidden shadow-2xl w-full h-full">
       <!-- Letterbox top bar -->
       <div class="absolute top-0 left-0 right-0 h-3 bg-black z-20"></div>
       @if (!isPlaying) {
-        <div class="relative aspect-video pt-3 cursor-pointer" (click)="play()">
+        <div class="relative aspect-video cursor-pointer" (click)="play()">
           @if (thumbnailUrl) {
             <img [src]="thumbnailUrl" [alt]="title" class="absolute inset-0 w-full h-full object-cover">
           }
@@ -25,7 +25,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
           </div>
         </div>
       } @else {
-        <div class="relative aspect-video pt-3">
+        <div class="relative aspect-video">
           <iframe
             #youtubeIframe
             [src]="safeEmbedUrl"

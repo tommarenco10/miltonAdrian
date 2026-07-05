@@ -15,7 +15,7 @@ import { YoutubeService } from '../../services/youtube.service';
   template: `
     <app-header />
     
-    <main class="min-h-screen pt-20 bg-white dark:bg-black transition-colors duration-300">
+    <main data-cursor="reel" class="min-h-screen pt-20 bg-white dark:bg-black transition-colors duration-300">
       <section class="container-custom py-16 border-b border-gray-100 dark:border-gray-700">
         <h1 class="text-5xl lg:text-6xl font-black tracking-tighter mb-4">
           <span class="block text-black dark:text-white">{{ t('work.title') }}</span>
@@ -48,17 +48,28 @@ import { YoutubeService } from '../../services/youtube.service';
               {{ tCategory(selectedCategory) }}
             </h2>
             @for (group of getFilteredGroups(); track group.name) {
+              @if (group.name !== 'Otros') {
               <div class="mb-10">
                 <h3 class="text-lg font-bold tracking-tight mb-6 pb-3 border-b-2 border-gray-300 dark:border-gray-700">
                   {{ group.name }}
                 </h3>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
                   @for (project of group.projects; track project.id) {
-                    <app-project-card 
+                    <app-project-card class="min-w-0"
                       [project]="project"
                       (onSelect)="onProjectSelect($event)" />
                   }
                 </div>
+              </div>
+              }
+            }
+            @if (getOtrosProjects().length > 0) {
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
+                @for (project of getOtrosProjects(); track project.id) {
+                  <app-project-card class="min-w-0"
+                    [project]="project"
+                    (onSelect)="onProjectSelect($event)" />
+                }
               </div>
             }
           </div>
@@ -69,9 +80,9 @@ import { YoutubeService } from '../../services/youtube.service';
                 {{ tCategory(category.slug) }}
                 <span class="text-gray-400 dark:text-gray-500 font-normal text-sm ml-2">({{ category.projects.length }})</span>
               </h2>
-              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
                 @for (project of category.projects; track project.id) {
-                  <app-project-card 
+                  <app-project-card class="min-w-0"
                     [project]="project"
                     (onSelect)="onProjectSelect($event)" />
                 }
@@ -143,6 +154,10 @@ export class WorkComponent implements OnInit {
     return Array.from(groups.entries()).map(([name, projects]) => ({ name, projects }));
   }
 
+  getOtrosProjects(): Project[] {
+    return this.filteredProjects.filter(p => !p.group);
+  }
+
   getFilterButtonClass(slug: string | null): string {
     const base = 'px-4 py-2 text-sm font-medium tracking-wide transition-all border flex-none whitespace-nowrap ';
     if (this.selectedCategory === slug) {
@@ -152,6 +167,8 @@ export class WorkComponent implements OnInit {
   }
 
   onProjectSelect(project: Project): void {
-    window.location.href = `/work/${project.id}`;
+    setTimeout(() => {
+      window.location.href = `/work/${project.id}`;
+    }, 400);
   }
 }

@@ -19,7 +19,7 @@ import { YoutubeService } from '../../services/youtube.service';
     <main class="min-h-screen pt-20 bg-white dark:bg-black transition-colors duration-300">
       <section class="w-full py-20 lg:py-28 border-b border-gray-200 dark:border-gray-700">
         <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start pl-4 pr-4">
-          <div class="w-36 h-36 lg:w-52 lg:h-52 flex-shrink-0 border-4 border-black dark:border-white p-1">
+          <div class="w-36 h-36 lg:w-52 lg:h-52 flex-shrink-0">
             <img 
               [src]="ownerInfo.profileImage" 
               [alt]="ownerInfo.name"
@@ -129,6 +129,8 @@ export class HomeComponent implements OnInit {
   }
 
   onProjectSelect(project: Project): void {
-    window.location.href = `/work/${project.id}`;
+    setTimeout(() => {
+      window.location.href = `/work/${project.id}`;
+    }, 400);
   }
 }

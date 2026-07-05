@@ -29,7 +29,9 @@ const RAW_CATEGORIES: RawCategory[] = [
     name: 'Detrás de Cámaras',
     slug: 'behind-the-scenes',
     videos: [
-      { title: '', url: 'https://www.youtube.com/watch?v=HH9lRF_Vp_Q&t=2s' }
+      { title: '', url: 'https://www.youtube.com/watch?v=HH9lRF_Vp_Q&t=2s' },
+      { title: '', url: 'https://www.youtube.com/watch?v=pSLmXlK8f90' },
+      { title: '', url: 'https://www.youtube.com/watch?v=EKBXYjA_Vbk' }
     ]
   },
   {
@@ -44,7 +46,10 @@ const RAW_CATEGORIES: RawCategory[] = [
     name: 'Sesión en Vivo',
     slug: 'live-session',
     videos: [
+      { title: '', url: 'https://www.youtube.com/watch?v=LDuyIZIgte8' },
       { title: '', url: 'https://www.youtube.com/watch?v=pYmjwwrOZdE' },
+      { title: '', url: 'https://www.youtube.com/watch?v=rHO37fDuJrI' },
+      { title: '', url: 'https://www.youtube.com/watch?v=MAyxSTUWGJE' },
       { title: '', url: 'https://www.youtube.com/watch?v=SpfYz1WIvXA&list=LL&index=103' },
       { title: '', url: 'https://www.youtube.com/watch?v=eNefwlhXJeY&list=LL&index=254' },
       { title: '', url: 'https://www.youtube.com/watch?v=s_ID3lCqyN8&list=LL&index=291' },
@@ -65,6 +70,7 @@ const RAW_CATEGORIES: RawCategory[] = [
     slug: 'recitales',
     videos: [
       { title: '', url: 'https://www.youtube.com/watch?v=5N1ePl_UUqA' },
+      { title: '', url: 'https://www.youtube.com/watch?v=F9CiBCo4Wn8' },
       { title: '', url: 'https://www.youtube.com/watch?v=bEU0vRFx-p4' },
       { title: '', url: 'https://www.youtube.com/watch?v=B9Z2kmxHoB4&t=2182s' },
       { title: '', url: 'https://www.youtube.com/watch?v=aA4NKcGg_UA&list=LL&index=187' },
