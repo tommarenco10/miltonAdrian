@@ -14,11 +14,12 @@
   }
 
   html.dark body {
-    @apply bg-gray-900 text-white;
+    @apply bg-black text-white;
   }
 
-  html.dark .bg-gray-900\/95 {
-    background-color: rgba(31, 41, 55, 0.95);
+  html.dark .bg-gray-900\/95,
+  html.dark .dark\:bg-gray-900\/95 {
+    background-color: rgba(0, 0, 0, 0.95);
   }
 }
 
