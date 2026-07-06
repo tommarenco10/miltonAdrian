@@ -100,13 +100,20 @@ export class CinematicCursorComponent implements OnInit, OnDestroy, AfterViewIni
   private onMouseMove = (e: MouseEvent) => {
     this.mouse.x = e.clientX;
     this.mouse.y = e.clientY;
+    if ((this.isActive || this.clickLock) && !this.getCursorTarget(e.target as HTMLElement)) {
+      this.forceReset();
+    }
   };
 
   private onVisibilityChange = () => {
     if (document.visibilityState === 'visible') {
+      this.rotationTween?.kill();
+      this.detailedRotation?.kill();
       if (this.simpleReel?.nativeElement && this.detailedReel?.nativeElement) {
         this.startContinuousRotation(this.simpleReel.nativeElement, this.detailedReel.nativeElement);
       }
+      cancelAnimationFrame(this.rafId);
+      this.startLoop();
     }
   };
 
@@ -253,6 +260,15 @@ export class CinematicCursorComponent implements OnInit, OnDestroy, AfterViewIni
       }
     `;
     document.head.appendChild(this.styleEl);
+  }
+
+  private forceReset() {
+    this.clickLock = false;
+    this.isActive = false;
+    this.isLeaving = false;
+    document.body.style.cursor = '';
+    this.removeCursorHide();
+    this.resetToIdle();
   }
 
   private removeCursorHide() {
